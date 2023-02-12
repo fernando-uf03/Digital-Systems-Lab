@@ -1,0 +1,39 @@
+Name     FERNANDOFILHO ;
+PartNo   00 ;
+Date     12/06/2022 ;
+Revision 01 ;
+Designer Engineer ;
+Company  USP ;
+Assembly None ;
+Location  ;
+Device   g16v8a ;
+
+/* *************** INPUT PINS *********************/
+PIN    2 = a                        ; /*                                 */ 
+PIN    3 = b                        ; /*                                 */ 
+PIN    4 = cent                        ; /*                                 */ 
+
+/* *************** OUTPUT PINS *********************/
+PIN    12 = inva                        ; /*                                 */ 
+PIN    13 = and                        ; /*                                 */ 
+PIN    14 = or                        ; /*                                 */ 
+PIN    15 = xor                        ; /*                                 */ 
+PIN    16 = xnor                        ; /*                                 */ 
+PIN    17 = soma                        ; /*                                 */ 
+PIN    18 = csaid                        ; /*                                 */ 
+
+
+
+inva = !a;
+
+and = a&b;
+
+or = a#b;
+
+xor = a$b;
+
+xnor = !(a$b);
+
+soma = (a)$(b)$(cent);
+
+csaid = (a&b)#(a&cent)#(b&cent);

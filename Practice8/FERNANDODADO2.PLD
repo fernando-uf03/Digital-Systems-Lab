@@ -1,0 +1,75 @@
+Name     FERNANDODADO2 ;
+PartNo   00 ;
+Date     21/6/2022 ;
+Revision 01 ;
+Designer Engineer ;
+Company  EE ;
+Assembly None ;
+Location  ;
+Device   g16v8a ;
+
+/* *************** INPUT PINS *********************/
+PIN    1 = clk                        ; /*                                 */ 
+PIN    11 = !oe                        ; /*                                 */ 
+
+/* *************** OUTPUT PINS *********************/
+PIN    [12..15] = [Q3..0]                        ; /*                                 */ 
+PIN    [16..19] = [T3..0]                        ; /*                                 */ 
+
+field countQ = [Q3..0];
+
+field countT = [T3..0];
+
+$define S0 'b'0000
+$define S1 'b'1101
+$define S2 'b'1110
+$define S3 'b'1100
+$define S4 'b'1010
+$define S5 'b'1000
+$define S6 'b'0010
+
+Sequenced countQ{
+
+present S0 next S1;
+
+present S1 next S2;
+
+present S2 next S3;
+
+present S3 next S4;
+
+present S4 next S5;
+
+present S5 next S6;
+
+present S6 next S1;
+
+}
+
+Sequenced countT{
+
+present S0 if !Q3 next S1;
+	if Q3 next S1;
+
+present S1 if !Q3 next S2;
+	if Q3 next S1;
+
+present S2 if !Q3 next S3;
+	if Q3 next S2;
+
+present S3 if !Q3 next S4;
+	if Q3 next S3;
+
+present S4 if !Q3 next S5;
+	if Q3 next S4;
+
+present S5 if !Q3 next S6;
+	if Q3 next S5;
+
+present S6 if !Q3 next S1;
+	if Q3 next S6;
+
+}
+
+
+
